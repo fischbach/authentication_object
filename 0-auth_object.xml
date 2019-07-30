@@ -1,0 +1,4 @@
+ <entry name="{{ auth_object_name }}">
+      <authentication-profile>{{ auth_profile_name }}</authentication-profile>
+      <authentication-method>{{ auth_method }}</authentication-method>
+    </entry>

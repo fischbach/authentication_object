@@ -1,0 +1,39 @@
+name: authentication_object
+label: 8. Create application object
+
+description: Create and authentication object to be used in the authentication policy.
+
+extends:
+
+type: panos
+
+labels:
+  collection:
+    - X509 Certificates
+
+variables:
+  - name: auth_object_name
+    description: Name for the authentication object
+    default: Duo_Radius-Proxy
+    type_hint: text
+  - name: auth_method
+    description: Authentication method
+    default: web-form
+    type_hint: dropdown
+    dd_list:
+      - key: web-form
+        value: web-form
+      - key: no-captive-portal
+        value: no-captive-portal
+      - key: browser-challenge
+        value: browser-challenge
+  - name: auth_profile_name
+    description: Name for the authentication profile
+    default: Duo_auth_profile
+    type_hint: text
+
+
+snippets:
+    - name: auth_policy
+      xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/authentication-object
+      file: 0-auth_object.xml
